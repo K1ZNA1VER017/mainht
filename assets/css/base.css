@@ -1,0 +1,2531 @@
+/* Базовые стили */
+:root {
+    --primary-yellow: #FFD700;
+    --primary-orange: #FFA500;
+    --accent-orange: #FF8C00;
+    --text-dark: #1A1A1A;
+    --text-light: #666666;
+    --background-white: #FFFFFF;
+    --background-light: #FAFAFA;
+    --border-light: #E5E5E5;
+    --shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-white);
+    font-weight: 400;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Шапка */
+.header {
+    background: var(--background-white);
+    padding: 1rem 0;
+    box-shadow: 0 1px 0 var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.logo-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--text-dark);
+}
+
+.nav-link.active {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-yellow), var(--primary-orange));
+    border-radius: 2px;
+}
+
+/* Главный баннер */
+.hero {
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-white) 100%);
+    padding: 6rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--primary-yellow) 0%, transparent 70%);
+    opacity: 0.1;
+    border-radius: 50%;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--text-dark) 0%, var(--text-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Кнопки */
+.btn {
+    padding: 0.875rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    color: var(--text-dark);
+    box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-yellow);
+    background: var(--primary-yellow);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-dark);
+    border: 2px solid var(--primary-orange);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-outline:hover {
+    background: var(--primary-orange);
+    color: var(--text-dark);
+    transform: translateY(-2px);
+}
+
+/* Секции */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+.page-header {
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-white) 100%);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.page-header p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta {
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-white) 100%);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.cta p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Карточки преимуществ */
+.advantages {
+    padding: 5rem 0;
+    background: var(--background-white);
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.advantage-card {
+    background: var(--background-white);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.advantage-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-yellow), var(--primary-orange));
+}
+
+.advantage-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.advantage-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.advantage-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.advantage-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Статистика */
+.stats {
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-white) 100%);
+    padding: 4rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 2rem;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Стили для страницы проектов */
+.filters {
+    background: var(--background-light);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.filters .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 150px;
+}
+
+.filter-group label {
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.filter-group select {
+    padding: 0.75rem;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background: var(--background-white);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--primary-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.projects {
+    padding: 4rem 0;
+    background: var(--background-white);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: linear-gradient(135deg, #FFF9E6, #FFEFBF);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid #FFE8A3;
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease, display 0.3s ease;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-yellow), var(--primary-orange));
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.project-header h3 {
+    color: var(--text-dark);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+.project-budget {
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    color: var(--text-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-category, .project-complexity, .project-deadline {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.project-description {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.skill-tag {
+    background: var(--primary-yellow);
+    color: var(--text-dark);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Сообщение "Проекты не найдены" */
+.no-projects-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.no-projects-content {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.no-projects-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.no-projects-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.no-projects-content p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+/* Кнопка сброса фильтров в фильтрах */
+.filters .container {
+    position: relative;
+}
+
+.reset-filters {
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--border-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    height: fit-content;
+}
+
+.reset-filters:hover {
+    color: var(--text-dark);
+    border-color: var(--primary-yellow);
+    background: var(--primary-yellow);
+}
+
+/* Адаптивность для проектов */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-group {
+        min-width: auto;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .project-budget {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        padding: 1.5rem;
+    }
+    
+    .project-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .no-projects-message {
+        padding: 3rem 1rem;
+    }
+    
+    .no-projects-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Стили для страницы услуг */
+.services {
+    padding: 4rem 0;
+    background: var(--background-white);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.service-card-compact {
+    background: var(--background-white);
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-card-compact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-yellow), var(--primary-orange));
+}
+
+.service-card-compact:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.service-icon {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.service-card-compact h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.service-card-compact p {
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.service-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.service-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-dark);
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.service-features li:last-child {
+    border-bottom: none;
+}
+
+.service-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-orange);
+    font-weight: 600;
+}
+
+.service-card-compact .btn {
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Стили для страницы контактов */
+.contacts {
+    padding: 4rem 0;
+    background: var(--background-white);
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-info h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--background-light);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-details h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.contact-details p {
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+    line-height: 1.5;
+}
+
+.contact-form-container {
+    background: var(--background-white);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-light);
+}
+
+.contact-form-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--background-white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Секция с картой */
+.map-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-white) 100%);
+}
+
+.map-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.map-placeholder {
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-dark);
+    box-shadow: var(--shadow);
+}
+
+.map-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.map-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.map-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.map-content p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.transport-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.transport-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.transport-icon {
+    font-size: 1.25rem;
+}
+
+/* Подвал */
+.footer {
+    background: var(--text-dark);
+    color: var(--background-white);
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-info h4 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-info p {
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+.footer-contacts p {
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+.footer-copyright {
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    text-align: center;
+    color: #999;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .page-header {
+        padding: 3rem 0;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+    }
+
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .filters .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        min-width: auto;
+    }
+
+    .project-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .project-budget {
+        align-self: flex-start;
+    }
+
+    .contacts {
+        padding: 3rem 0;
+    }
+
+    .map-section {
+        padding: 3rem 0;
+    }
+
+    .map-placeholder {
+        padding: 2rem;
+    }
+
+    .transport-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-item {
+        padding: 1rem;
+    }
+
+    .contact-form-container {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .advantage-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .service-card-compact {
+        padding: 1.5rem 1rem;
+    }
+
+    .project-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .contact-form-container {
+        padding: 1.5rem;
+    }
+
+    .contact-info h2,
+    .contact-form-container h2,
+    .map-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .map-content h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Добавляем эти стили в конец файла */
+
+/* Стили для страницы детализации проекта */
+.project-header-content {
+    text-align: left;
+}
+
+.project-breadcrumb {
+    margin-bottom: 1rem;
+}
+
+.project-breadcrumb a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.project-breadcrumb a:hover {
+    color: var(--primary-orange);
+}
+
+.project-meta-header {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.budget-badge {
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    color: var(--text-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.deadline-badge {
+    background: var(--background-light);
+    color: var(--text-dark);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--border-light);
+}
+
+.project-detail {
+    padding: 3rem 0;
+    background: var(--background-white);
+}
+
+.project-detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.project-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.project-section {
+    background: var(--background-white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow);
+}
+
+.project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--primary-yellow);
+    padding-bottom: 0.5rem;
+}
+
+.project-description-detail p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+.tasks-list {
+    list-style: none;
+    padding: 0;
+}
+
+.tasks-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-dark);
+}
+
+.tasks-list li:last-child {
+    border-bottom: none;
+}
+
+.tasks-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-orange);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.requirements-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.requirements-content li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-dark);
+}
+
+.requirements-content li:last-child {
+    border-bottom: none;
+}
+
+.requirements-content li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-orange);
+    font-weight: 600;
+}
+
+.tech-requirements {
+    background: var(--background-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-orange);
+}
+
+.tech-requirements p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Боковая панель проекта */
+.project-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.project-info-card,
+.skills-card,
+.apply-card {
+    background: var(--background-white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow);
+}
+
+.project-info-card h3,
+.skills-card h3,
+.apply-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background: var(--primary-yellow);
+    color: var(--text-dark);
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.apply-card p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+.apply-info {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+    text-align: center;
+}
+
+.apply-info p {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.contact-link {
+    display: block;
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0.25rem 0;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--primary-yellow);
+}
+
+/* Похожие проекты */
+.similar-projects {
+    padding: 3rem 0;
+    background: var(--background-light);
+}
+
+.projects-grid-mini {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--background-white);
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.modal-close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--text-dark);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.apply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+}
+
+.checkbox-group label {
+    font-weight: 400;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.modal-cancel {
+    background: var(--background-light);
+    color: var(--text-dark);
+}
+
+.modal-cancel:hover {
+    background: #e0e0e0;
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+    .project-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .project-sidebar {
+        position: static;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-meta-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .project-section {
+        padding: 1.5rem;
+    }
+    
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+/* Стили для страниц услуг */
+.service-header-content {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.service-breadcrumb {
+    margin-bottom: 1.5rem;
+}
+
+.service-breadcrumb a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.service-breadcrumb a:hover {
+    color: var(--primary-orange);
+}
+
+.service-detail {
+    padding: 4rem 0;
+    background: var(--background-white);
+}
+
+.service-detail-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.service-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.service-section {
+    background: var(--background-white);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-light);
+}
+
+.service-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    border-bottom: 3px solid var(--primary-yellow);
+    padding-bottom: 0.75rem;
+}
+
+.service-description p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+/* Стили для карточек направлений */
+.development-areas,
+.integration-areas,
+.support-services,
+.analytics-areas,
+.cloud-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.area-card,
+.integration-card,
+.support-card,
+.analytics-card,
+.cloud-card {
+    background: linear-gradient(135deg, #FFF9E6, #FFEFBF);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #FFE8A3;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.area-card::before,
+.integration-card::before,
+.support-card::before,
+.analytics-card::before,
+.cloud-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-yellow), var(--primary-orange));
+}
+
+.area-card:hover,
+.integration-card:hover,
+.support-card:hover,
+.analytics-card:hover,
+.cloud-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.area-icon,
+.integration-icon,
+.support-icon,
+.analytics-icon,
+.cloud-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+
+.area-card h4,
+.integration-card h4,
+.support-card h4,
+.analytics-card h4,
+.cloud-card h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.area-card p,
+.integration-card p,
+.support-card p,
+.analytics-card p,
+.cloud-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.area-card ul,
+.integration-card ul,
+.support-card ul,
+.analytics-card ul,
+.cloud-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.area-card li,
+.integration-card li,
+.support-card li,
+.analytics-card li,
+.cloud-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 232, 163, 0.5);
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-dark);
+}
+
+.area-card li:last-child,
+.integration-card li:last-child,
+.support-card li:last-child,
+.analytics-card li:last-child,
+.cloud-card li:last-child {
+    border-bottom: none;
+}
+
+.area-card li::before,
+.integration-card li::before,
+.support-card li::before,
+.analytics-card li::before,
+.cloud-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-orange);
+    font-weight: 600;
+}
+
+.cloud-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid #FFE8A3;
+}
+
+/* Стили для технологий */
+.technologies-grid,
+.tech-specs,
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.tech-item,
+.tech-spec {
+    background: var(--background-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-orange);
+}
+
+.tech-item h4,
+.tech-spec h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.tech-item p,
+.tech-spec p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.tech-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-features span {
+    background: var(--primary-yellow);
+    color: var(--text-dark);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Стили для примеров проектов */
+.projects-examples {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.example-card {
+    background: var(--background-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-orange);
+}
+
+.example-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.example-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.example-duration {
+    background: var(--primary-yellow);
+    color: var(--text-dark);
+    padding: 0.4rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Стили для кейсов */
+.case-studies {
+    display: grid;
+    gap: 2rem;
+}
+
+.case-study {
+    background: var(--background-light);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+}
+
+.case-study h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.case-study p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.case-results {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.result-item {
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+}
+
+.result-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+    margin-bottom: 0.5rem;
+}
+
+.result-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Стили для преимуществ */
+.benefits-grid,
+.advantages-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.benefit-item,
+.advantage-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.benefit-icon,
+.advantage-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.benefit-content,
+.advantage-content {
+    flex: 1;
+}
+
+.benefit-item h4,
+.advantage-item h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.benefit-item p,
+.advantage-item p {
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* Стили для облачных преимуществ */
+.cloud-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.benefit-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Стили для процессов */
+.process-steps,
+.migration-process {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.process-step,
+.migration-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--background-light);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.process-step:hover,
+.migration-step:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow);
+}
+
+.step-number {
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    color: var(--text-dark);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+}
+
+.step-content h3,
+.step-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.step-content p {
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Стили для конфигураций */
+.configurations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.configuration-card {
+    background: var(--background-light);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.configuration-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.configuration-card h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.configuration-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.configuration-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.configuration-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-dark);
+}
+
+.configuration-card li:last-child {
+    border-bottom: none;
+}
+
+.configuration-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-orange);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Стили для тарифов */
+.tariffs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.tariff-card {
+    background: var(--background-white);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    border: 2px solid var(--border-light);
+    position: relative;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.tariff-card.featured {
+    border-color: var(--primary-orange);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.tariff-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    color: var(--text-dark);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.tariff-card h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.tariff-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+    margin: 1.5rem 0;
+}
+
+.tariff-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.tariff-card li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    padding-left: 2rem;
+    color: var(--text-dark);
+}
+
+.tariff-card li:last-child {
+    border-bottom: none;
+}
+
+.tariff-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-orange);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Боковая панель */
+.service-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.service-info-card,
+.contact-card,
+.security-card {
+    background: var(--background-white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-light);
+}
+
+.service-info-card h3,
+.contact-card h3,
+.security-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    text-align: center;
+    border-bottom: 2px solid var(--primary-yellow);
+    padding-bottom: 0.75rem;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price-label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.price-value {
+    font-weight: 700;
+    color: var(--primary-orange);
+    font-size: 1.1rem;
+}
+
+.contact-card p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.btn-full {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.contact-info a {
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary-yellow);
+}
+
+/* Экстренные контакты */
+.emergency-contacts {
+    margin-top: 1rem;
+}
+
+.emergency-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.emergency-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.emergency-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.emergency-value {
+    font-weight: 600;
+    color: var(--primary-orange);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.emergency-value:hover {
+    color: var(--primary-yellow);
+}
+
+/* Карта безопасности */
+.security-card {
+    border-left: 4px solid #4CAF50;
+}
+
+.security-card p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+.security-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.security-card li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-dark);
+}
+
+.security-card li:last-child {
+    border-bottom: none;
+}
+
+.security-card li::before {
+    content: '🛡️';
+    position: absolute;
+    left: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+    .service-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .service-sidebar {
+        position: static;
+    }
+    
+    .tariff-card.featured {
+        transform: none;
+    }
+    
+    .cloud-benefits {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-section {
+        padding: 2rem 1.5rem;
+    }
+    
+    .development-areas,
+    .integration-areas,
+    .support-services,
+    .analytics-areas,
+    .cloud-services {
+        grid-template-columns: 1fr;
+    }
+    
+    .tariffs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-grid,
+    .advantages-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .technologies-grid,
+    .tech-specs,
+    .tech-stack {
+        grid-template-columns: 1fr;
+    }
+    
+    .configurations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-step,
+    .migration-step {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .case-results {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .service-info-card,
+    .contact-card,
+    .security-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .area-card,
+    .integration-card,
+    .support-card,
+    .analytics-card,
+    .cloud-card,
+    .tariff-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .service-info-card,
+    .contact-card,
+    .security-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .emergency-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+}
+
+/* Стили для таблицы тарифов */
+.pricing-table {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-white) 100%);
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    background: var(--background-white);
+}
+
+.tariff-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.tariff-table th,
+.tariff-table td {
+    padding: 1.25rem 1rem;
+    text-align: center;
+    border: 1px solid var(--border-light);
+}
+
+.tariff-table th {
+    background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.tariff-table tr:nth-child(even) {
+    background-color: var(--background-light);
+}
+
+.tariff-table tr:hover {
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+.tariff-table td:first-child {
+    font-weight: 500;
+    text-align: left;
+    background: var(--background-light);
+}
+
+.table-note {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.table-note p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Адаптивность таблицы */
+@media (max-width: 768px) {
+    .pricing-table {
+        padding: 3rem 0;
+    }
+    
+    .tariff-table th,
+    .tariff-table td {
+        padding: 1rem 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tariff-table th,
+    .tariff-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Для адаптивности */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-img {
+        height: 30px;
+    }
+}
